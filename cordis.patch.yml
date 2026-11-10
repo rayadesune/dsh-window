@@ -1,18 +1,19 @@
-# Bundle patch for dsh-context-window-switch.
+# Bundle patch for dsh-window.
 #
 # The host half owns the session-scoped context-window override: it intercepts
 # the `llm` service (prepareCall / resolveModelInfo) plus Session#requestHeader so
 # the override reaches the request `context`, the `request/context` session event
 # and compaction, and it serves the tiny JSON API the Client half calls.
 - insert:
-    - id: context-window-switch
-      name: 'dsh-context-window-switch'
+    - id: dsh-window
+      # Module specifier the loader imports; must be the installed package name
+      # (@rayadesu/dsh-window), not the bare plugin id — bare names resolve from
+      # the profile directory, where only the scoped package exists.
+      name: '@rayadesu/dsh-window'
       config:
         presets:
-          - 131072
-          - 262144
-          - 524288
-          - 1048576
+          - 307200
+          - 614400
         completionRatio: 0.25
         headroomTokens: 65536
         minimumWindow: 131072

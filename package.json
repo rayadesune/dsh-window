@@ -1,7 +1,7 @@
 {
-  "name": "dsh-context-window-switch",
-  "version": "0.2.0",
-  "description": "Session-scoped context window switcher for the DSH model picker (maintained continuation of dsh-context-window-picker)",
+  "name": "@rayadesu/dsh-window",
+  "version": "0.4.1",
+  "description": "Session-scoped context window switcher as a DSH composer control (maintained continuation of dsh-context-window-picker)",
   "type": "module",
   "main": "index.js",
   "exports": {
@@ -26,7 +26,7 @@
     "cordis",
     "plugin",
     "context-window",
-    "model-selector"
+    "composer-control"
   ],
   "author": "rayadesune",
   "contributors": [
@@ -34,11 +34,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rayadesune/dsh-context-window-switch.git"
+    "url": "git+https://github.com/rayadesune/dsh-window.git"
   },
-  "homepage": "https://github.com/rayadesune/dsh-context-window-switch#readme",
+  "homepage": "https://github.com/rayadesune/dsh-window#readme",
   "bugs": {
-    "url": "https://github.com/rayadesune/dsh-context-window-switch/issues"
+    "url": "https://github.com/rayadesune/dsh-window/issues"
   },
   "dsh": {
     "bundle": {
@@ -48,7 +48,6 @@
       "platform": "web",
       "immediately": true,
       "inject": [
-        "@deepseek-ai/dsh-client-ui-model-selection",
         "@deepseek-ai/dsh-client-ui-renderer",
         "@deepseek-ai/dsh-client-locale"
       ]
@@ -62,5 +61,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }

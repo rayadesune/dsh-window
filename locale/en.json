@@ -1,6 +1,6 @@
 {
   "meta": {
     "title": "Context Window Switch",
-    "description": "Temporarily change this session's context window from the model popup; a new session returns to the Profile default."
+    "description": "Temporarily change this session's context window from a composer tool-row control; a new session returns to the Profile default."
   }
 }
