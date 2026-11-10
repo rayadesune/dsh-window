@@ -21,7 +21,11 @@
  */
 
 window.__ModuleLoader__.load({
-  id: 'dsh-window',
+  // Must be the package name: the loader registers the boot-graph row
+  // (@rayadesu/dsh-window) and checks `factories.has(row.id)` after executing
+  // this bundle. A bare plugin id registers a factory the graph never consumes,
+  // so the row reports "loaded without registering".
+  id: '@rayadesu/dsh-window',
   factory(require) {
     const React = require('react');
     const { Menu } = require('@deepseek-ai/dsh-client-ui-primitives');
