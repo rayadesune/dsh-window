@@ -13,7 +13,6 @@
       config:
         presets:
           - 307200
-          - 614400
         completionRatio: 0.25
         headroomTokens: 65536
         minimumWindow: 131072

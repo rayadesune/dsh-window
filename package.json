@@ -1,6 +1,6 @@
 {
   "name": "@rayadesu/dsh-window",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Session-scoped context window switcher as a DSH composer control (maintained continuation of dsh-context-window-picker)",
   "type": "module",
   "main": "index.js",

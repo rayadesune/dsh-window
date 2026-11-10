@@ -31,7 +31,7 @@ const LOOPBACK_PATTERN = /^127\.\d{1,3}\.\d{1,3}\.\d{1,3}$/;
 /** compaction-basic's shipped pressure ratio; only used to report the default path. */
 const OFFICIAL_THRESHOLD_RATIO = 0.8;
 const DEFAULT_SETTINGS = {
-  presets: [307200, 614400],
+  presets: [307200],
   completionRatio: 0.25,
   headroomTokens: 65536,
   minimumWindow: 131072,

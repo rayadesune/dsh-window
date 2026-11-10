@@ -39,7 +39,7 @@ git clone https://github.com/rayadesune/dsh-window.git
 1. 输入框工具行里，**模型按钮左边**有一个 **`1M`** 这样的纯文字按钮 —— 不带图标、不带箭头。
 2. 点一下**直接展开档位菜单**（和「允许完全访问」那个审批按钮同一套 `Menu` 组件）：
    - 默认（跟随模型）
-   - 300K / 600K（只列出不超过当前模型默认窗口的档位；
+   - 300K（只列出不超过当前模型默认窗口的档位；
      选中与默认相同的档位等同于回到「默认」）
    当前档位右侧有勾选标记。
 3. 选中后菜单关闭、焦点回到按钮，覆盖立即写入当前会话；
@@ -66,7 +66,7 @@ git clone https://github.com/rayadesune/dsh-window.git
   同时把 owner props 里的 `provider.id` / `model.id` 当作纯数据记录下来，
   供控件向宿主查询当前模型的基准窗口。它不注入控件、不隐藏节点、不抢焦点。
 - 菜单直接用原生 `Menu` 组件（`@deepseek-ai/dsh-client-ui-primitives`，平台共享模块）：
-  `side="top"`、`align="end"`、`portal`，items 就是「默认 / 300K / 600K」三行数据。
+  `side="top"`、`align="end"`、`portal`，items 就是「默认 / 300K」两行数据。
   材质、圆角、行高、字号、勾选样式、键盘行走、选中回焦、外部点击关闭全部来自组件本身，
   插件不复制任何一条规则、也不接管焦点。
 - 触发器只写一份 5 条规则的小样式表，数值直接取自官方 `ModelSelect` 的 `.trigger`：
@@ -107,7 +107,7 @@ git clone https://github.com/rayadesune/dsh-window.git
 | 档位 | 压缩阈值 | 规则 |
 | --- | --- | --- |
 | 默认 | `min(窗口 × 0.8, 窗口 − 预留 − headroom)` | 官方规则，插件不干预 |
-| 300K / 600K | **307,200 / 614,400** | 等于所选窗口本身 |
+| 300K | **307,200** | 等于所选窗口本身 |
 
 阈值等于整个窗口之所以安全：覆盖只缩小 DSH 的**规划**窗口，适配器真实的
 `contextWindow` 仍是目录里的值（这台机器是 1M）。请求实际能装下的空间没有变小，
@@ -124,7 +124,7 @@ git clone https://github.com/rayadesune/dsh-window.git
 
 | 键 | 默认 | 说明 |
 | --- | --- | --- |
-| `presets` | `[307200, 614400]` | 候选窗口（300K / 600K；只显示不超过模型默认值的） |
+| `presets` | `[307200]` | 候选窗口（300K；只显示不超过模型默认值的） |
 | `completionRatio` | `0.25` | 单次输出上限 ≤ 窗口 × 该比例 |
 | `headroomTokens` | `65536` | 与压缩策略的 headroom 对齐，保证压缩不会因预留不足报错 |
 | `minimumWindow` | `131072` | 最小可选窗口；低于它的模型只显示「默认」 |
@@ -140,7 +140,7 @@ git clone https://github.com/rayadesune/dsh-window.git
 ## 已验证
 
 - 宿主：`GET /dsh-window/api/state` 在当前模型（base 1048576）上给出
-  `默认 → 阈值 720896`（官方规则）、`300K → 307200`、`600K → 614400`，
+  `默认 → 阈值 720896`（官方规则）、`300K → 307200`，
   `compaction.mode` 分别为 `official` / `window`；`POST /api/set` 设值、越界、
   回默认三条路径都验证过。覆盖后下一条请求的 `request/context` 记录新的
   `contextWindow`，`request/header.maxTokens` 同步收紧。
